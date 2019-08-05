@@ -1,26 +1,103 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+// 引入子组件
+import Testone from './Testone/Testone';
+import Testtwo from './Testtwo/Testtwo';
+import Clock from './TestClock/Clock';
+import CreateRef from './TestCreateRef/CreateRef'
+import Toggle from './TestToggle/Toggle';
+import Greeting from './TestGreeting/Greeting';
+import LoginControll from './TestLoginControll/LoginControll';
+import UnReadMessage from './TestUnReadMsg/UnReadMessage'
+import Page from "./TestPage/Page";
+import MapFunc from "./TestMap/MapFunc";
+
+function TimeString() {
+    return (
+        <div>
+            {new Date().toLocaleTimeString()}
+        </div>
+    );
+}
+class App extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            date: new Date()
+        };
+    }
+    formatName = (user) => {
+        return user.firstName + ' ' + user.lastName;
+    };
+    getGreeting = (user) => {
+        if (user) {
+            return <h1>Hello, {this.formatName(user)}!</h1>
+        }
+        return <h1>Hello, strange.</h1>
+    };
+
+    // componentDidMount() {
+    //     setInterval(() => {
+    //         this.setState({date: new Date()});
+    //     }, 1000);
+    // }
+
+    render() {
+        const user = {
+            firstName: 'Crystal',
+            lastName: 'Hui'
+        };
+        const comment = {
+            date: new Date(),
+            text: '学习学习学习，好好学习，天天向上！！！O(∩_∩)O~',
+            author: {
+                name: 'Crystal',
+                avatarUrl: 'https://placekitten.com/g/64/64'
+            }
+        };
+        const message = ['React', 'Vue', 'Angular'];
+        const numbers = [1, 2, 3, 4, 5];
+
+        return (
+            <>
+                <MapFunc numbers={numbers}/>
+                <Page />
+                <UnReadMessage unReadMessage={message}/>
+                <LoginControll />
+                <Greeting greeting={false}/>
+                <Toggle />
+                <Clock />
+                <CreateRef />
+
+                <div>
+                    <Testtwo
+                        date={comment.date}
+                        text={comment.text}
+                        author={comment.author}/>
+                </div>
+
+                <div>
+                    <Testone name='sara'/>
+                    <Testone name='crystal'/>
+                    <Testone name='heriky'/>
+                </div>
+
+                <h1>
+                    Hello, {this.formatName(user)}
+                </h1>
+
+                <div className='box'>
+                    {this.getGreeting(user)}
+                </div>
+
+                <div>
+                    <h1>Hello, world</h1>
+                    <h2>It is. <TimeString /></h2>
+                </div>
+            </>
+        )
+    }
 }
 
 export default App;
