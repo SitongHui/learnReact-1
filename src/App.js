@@ -12,6 +12,7 @@ import LoginControll from './TestLoginControll/LoginControll';
 import UnReadMessage from './TestUnReadMsg/UnReadMessage'
 import Page from "./TestPage/Page";
 import MapFunc from "./TestMap/MapFunc";
+import Blog from "./TestBlog/Blog";
 
 function TimeString() {
     return (
@@ -59,8 +60,14 @@ class App extends Component {
         const message = ['React', 'Vue', 'Angular'];
         const numbers = [1, 2, 3, 4, 5];
 
+        const posts = [
+            { id: 1, title: 'dj', content: 'dj is clever!' },
+            { id: 2, title: 'hst', content: 'hst is clever!' }
+        ];
+
         return (
             <>
+                <Blog posts={posts}/>
                 <MapFunc numbers={numbers}/>
                 <Page />
                 <UnReadMessage unReadMessage={message}/>
