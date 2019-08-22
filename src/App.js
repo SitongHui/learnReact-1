@@ -25,7 +25,9 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            date: new Date()
+            date: new Date(),
+            isGoing: true,
+            numberOfGuests: 2
         };
     }
     formatName = (user) => {
@@ -44,6 +46,14 @@ class App extends Component {
     //     }, 1000);
     // }
 
+    handleInputChange = name => e => {
+        const target = e.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        this.setState({
+            [name]: value
+        })
+    };
+
     render() {
         const user = {
             firstName: 'Crystal',
@@ -59,7 +69,6 @@ class App extends Component {
         };
         const message = ['React', 'Vue', 'Angular'];
         const numbers = [1, 2, 3, 4, 5];
-
         const posts = [
             { id: 1, title: 'dj', content: 'dj is clever!' },
             { id: 2, title: 'hst', content: 'hst is clever!' }
@@ -67,6 +76,31 @@ class App extends Component {
 
         return (
             <>
+                {
+                    /* 表单 受控组件 */
+                }
+                <div className='form'>
+                    <form>
+                        <label>
+                            参与：
+                            <input
+                                type="checkbox"
+                                checked={this.state.isGoing}
+                                onChange={this.handleInputChange('isGoing')}
+                            />
+                        </label>
+                        <br/>
+                        <label>
+                            来宾人数:
+                            <input
+                                type="number"
+                                value={this.state.numberOfGuests}
+                                onChange={this.handleInputChange('numberOfGuests')}
+                            />
+                        </label>
+                    </form>
+                </div>
+
                 <Blog posts={posts}/>
                 <MapFunc numbers={numbers}/>
                 <Page />
