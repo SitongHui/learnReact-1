@@ -10,9 +10,10 @@ import Toggle from './TestToggle/Toggle';
 import Greeting from './TestGreeting/Greeting';
 import LoginControll from './TestLoginControll/LoginControll';
 import UnReadMessage from './TestUnReadMsg/UnReadMessage'
-import Page from "./TestPage/Page";
-import MapFunc from "./TestMap/MapFunc";
+import Page from './TestPage/Page';
+import MapFunc from './TestMap/MapFunc';
 import Blog from "./TestBlog/Blog";
+import Calculator from './Temperature/Calculator'
 
 function TimeString() {
     return (
@@ -76,6 +77,8 @@ class App extends Component {
 
         return (
             <>
+                <Calculator />
+
                 {
                     /* 表单 受控组件 */
                 }
