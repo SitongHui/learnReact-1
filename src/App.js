@@ -14,6 +14,11 @@ import Page from './TestPage/Page';
 import MapFunc from './TestMap/MapFunc';
 import Blog from "./TestBlog/Blog";
 import Calculator from './Temperature/Calculator'
+import WelcomeDialog from './FancyBorder/WelcomeDialog';
+import SplitPane from './SplitPane/SplitPane';
+import Chat from './SplitPane/Chat';
+import Contacts from './SplitPane/Contacts';
+import SignUpDialog from "./SignUpDialog/SignUpDialog";
 
 function TimeString() {
     return (
@@ -77,6 +82,15 @@ class App extends Component {
 
         return (
             <>
+                <SignUpDialog />
+
+                <SplitPane
+                    left={ <Contacts /> }
+                    right={<Chat />}
+                />
+
+                <WelcomeDialog />
+
                 <Calculator />
 
                 {
