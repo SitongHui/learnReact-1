@@ -19,6 +19,8 @@ import SplitPane from './SplitPane/SplitPane';
 import Chat from './SplitPane/Chat';
 import Contacts from './SplitPane/Contacts';
 import SignUpDialog from "./SignUpDialog/SignUpDialog";
+import BlurExample from "./senior/BlurExample/BlurExample";
+import MyComponent from "./senior/codeDivsion/MyComponent";
 
 function TimeString() {
     return (
@@ -82,6 +84,10 @@ class App extends Component {
 
         return (
             <>
+                <MyComponent />
+
+                <BlurExample />
+
                 <SignUpDialog />
 
                 <SplitPane
