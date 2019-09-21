@@ -21,6 +21,10 @@ import Contacts from './SplitPane/Contacts';
 import SignUpDialog from "./SignUpDialog/SignUpDialog";
 import BlurExample from "./senior/BlurExample/BlurExample";
 import MyComponent from "./senior/codeDivsion/MyComponent";
+import ToolBar from "./senior/ContextPractice/noUseContext/ToolBar";
+import Toolbar from "./senior/ContextPractice/useContext/Toolbar";
+
+import ThemeContext from './ctx';
 
 function TimeString() {
     return (
@@ -29,6 +33,7 @@ function TimeString() {
         </div>
     );
 }
+
 class App extends Component {
     constructor(props) {
         super(props);
@@ -84,6 +89,12 @@ class App extends Component {
 
         return (
             <>
+                <ThemeContext.Provider value="dark">
+                    <Toolbar />
+                </ThemeContext.Provider>
+
+                <ToolBar theme="dark"/>
+
                 <MyComponent />
 
                 <BlurExample />
