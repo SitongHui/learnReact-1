@@ -3,7 +3,7 @@ import WarningBanner from "./WarningBanner";
 
 class Page extends Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             showWarning: true
         }

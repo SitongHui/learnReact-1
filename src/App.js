@@ -25,6 +25,10 @@ import ToolBar from "./senior/ContextPractice/noUseContext/ToolBar";
 import Toolbar from "./senior/ContextPractice/useContext/Toolbar";
 
 import ThemeContext from './ctx';
+import ThemedContext, { themes } from './context';
+import DynamicToolbar from "./senior/ContextPractice/dynamicContext/DynamicToolbar";
+// import ThemedButton from "./senior/ContextPractice/noUseContext/ThemedButton";
+import DynamicThemedBtn from "./senior/ContextPractice/dynamicContext/DynamicThemedBtn";
 
 function TimeString() {
     return (
@@ -40,7 +44,8 @@ class App extends Component {
         this.state = {
             date: new Date(),
             isGoing: true,
-            numberOfGuests: 2
+            numberOfGuests: 2,
+            theme: themes.light
         };
     }
     formatName = (user) => {
@@ -63,8 +68,14 @@ class App extends Component {
         const target = e.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
         this.setState({
-            [name]: value
+            [name]: value,
         })
+    };
+
+    toggleTheme = () => {
+        this.setState(state => ({
+            theme: state.theme === themes.dark ? themes.light : themes.dark
+        }));
     };
 
     render() {
@@ -87,8 +98,17 @@ class App extends Component {
             { id: 2, title: 'hst', content: 'hst is clever!' }
         ];
 
+
+
         return (
             <>
+                {/* 动态context */}
+                <ThemedContext.Provider value={this.state.theme}>
+                    <DynamicToolbar changeTheme={this.toggleTheme}/>
+                </ThemedContext.Provider>
+                <DynamicThemedBtn />
+
+
                 <ThemeContext.Provider value="dark">
                     <Toolbar />
                 </ThemeContext.Provider>

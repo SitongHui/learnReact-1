@@ -18,3 +18,4 @@ class WelcomeDialog extends Component {
 }
 
 export default WelcomeDialog;
+
