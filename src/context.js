@@ -10,5 +10,9 @@ export const themes = {
     }
 };
 
-const ThemedContext = React.createContext(themes.dark); // themes.dark是默认值
+const ThemedContext = React.createContext({
+    theme: themes.dark,
+    toggleTheme: () => {}
+
+}); // themes.dark是默认值
 export default ThemedContext;

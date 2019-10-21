@@ -12,23 +12,23 @@ import LoginControll from './TestLoginControll/LoginControll';
 import UnReadMessage from './TestUnReadMsg/UnReadMessage'
 import Page from './TestPage/Page';
 import MapFunc from './TestMap/MapFunc';
-import Blog from "./TestBlog/Blog";
+import Blog from './TestBlog/Blog';
 import Calculator from './Temperature/Calculator'
 import WelcomeDialog from './FancyBorder/WelcomeDialog';
 import SplitPane from './SplitPane/SplitPane';
 import Chat from './SplitPane/Chat';
 import Contacts from './SplitPane/Contacts';
-import SignUpDialog from "./SignUpDialog/SignUpDialog";
-import BlurExample from "./senior/BlurExample/BlurExample";
-import MyComponent from "./senior/codeDivsion/MyComponent";
-import ToolBar from "./senior/ContextPractice/noUseContext/ToolBar";
-import Toolbar from "./senior/ContextPractice/useContext/Toolbar";
+import SignUpDialog from './SignUpDialog/SignUpDialog';
+import BlurExample from './senior/BlurExample/BlurExample';
+import MyComponent from './senior/codeDivsion/MyComponent';
+import ToolBar from './senior/ContextPractice/noUseContext/ToolBar';
+import Toolbar from './senior/ContextPractice/useContext/Toolbar';
 
 import ThemeContext from './ctx';
 import ThemedContext, { themes } from './context';
-import DynamicToolbar from "./senior/ContextPractice/dynamicContext/DynamicToolbar";
-// import ThemedButton from "./senior/ContextPractice/noUseContext/ThemedButton";
-import DynamicThemedBtn from "./senior/ContextPractice/dynamicContext/DynamicThemedBtn";
+import DynamicToolbar from './senior/ContextPractice/dynamicContext/DynamicToolbar';
+import DynamicThemedBtn from './senior/ContextPractice/dynamicContext/DynamicThemedBtn';
+import Content from './senior/ContextPractice/nestComponentUpdate/Content';
 
 function TimeString() {
     return (
@@ -45,7 +45,8 @@ class App extends Component {
             date: new Date(),
             isGoing: true,
             numberOfGuests: 2,
-            theme: themes.light
+            theme: themes.light,
+            toggleTheme: this.toggleTheme
         };
     }
     formatName = (user) => {
@@ -102,6 +103,11 @@ class App extends Component {
 
         return (
             <>
+                {/* 嵌套组件更新context */}
+                <ThemedContext.Provider value={this.state}>
+                    <Content/>
+                </ThemedContext.Provider>
+
                 {/* 动态context */}
                 <ThemedContext.Provider value={this.state.theme}>
                     <DynamicToolbar changeTheme={this.toggleTheme}/>
